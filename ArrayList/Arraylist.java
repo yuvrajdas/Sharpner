@@ -32,8 +32,8 @@ public class Arraylist {
         
         list.add(2, 9);
         System.out.println(list);
-       list.remove(1);
-               System.out.println(list);
+        list.remove(1);
+        System.out.println(list);
 
     }
 }
