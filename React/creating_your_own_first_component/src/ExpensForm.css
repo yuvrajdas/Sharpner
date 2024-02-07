@@ -1,0 +1,17 @@
+.form-wrapper{
+    width: 60%;
+    height: 250px;
+    margin: auto;
+    border-radius: 10px;
+    background-color: blueviolet;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+button{
+    background-color: #380054 !important;
+    outline: none !important;
+    border: none !important;
+}
