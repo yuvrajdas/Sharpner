@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
-import './ExpensForm.css' 
+import React, { useState } from 'react';
+import './ExpensForm.css';
+
 const ExpenseForm = () => {
     const [expenseDetails, setExpenseDetails] = useState({ title: "", amount: "", date: "" });
+    const [submittedExpense, setSubmittedExpense] = useState(null);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -13,8 +15,9 @@ const ExpenseForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(expenseDetails);
-        // Add further logic here to handle form submission
+        setSubmittedExpense(expenseDetails);
+        // Reset form fields after submission if needed
+        setExpenseDetails({ title: "", amount: "", date: "" });
     };
 
     return (
@@ -39,9 +42,12 @@ const ExpenseForm = () => {
                 </form>
             </div>
 
-            <div>
-                <p>Title: {expenseDetails.title} Amount: {expenseDetails.amount} Date: {expenseDetails.date}</p>
-            </div>
+            {submittedExpense && (
+                <div>
+                    <p>Submitted Expense Details:</p>
+                    <p>Title: {submittedExpense.title} Amount: {submittedExpense.amount} Date: {submittedExpense.date}</p>
+                </div>
+            )}
         </>
     );
 };
