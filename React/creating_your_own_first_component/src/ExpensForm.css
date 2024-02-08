@@ -9,6 +9,23 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
+.content{
+    display: flex !important;
+    background-color: #380054;
+    color: #ffffff;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.content__data{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
 
 button{
     background-color: #380054 !important;

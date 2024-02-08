@@ -3,8 +3,7 @@ import './ExpensForm.css';
 
 const ExpenseForm = () => {
     const [expenseDetails, setExpenseDetails] = useState({ title: "", amount: "", date: "" });
-    const [submittedExpense, setSubmittedExpense] = useState(null);
-
+    const [expenseData, setExpenseData] = useState([]);
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setExpenseDetails(prevState => ({
@@ -15,7 +14,9 @@ const ExpenseForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSubmittedExpense(expenseDetails);
+        expenseData.push(expenseDetails);
+        setExpenseData(expenseData);
+        console.log(expenseData);
         // Reset form fields after submission if needed
         setExpenseDetails({ title: "", amount: "", date: "" });
     };
@@ -42,12 +43,26 @@ const ExpenseForm = () => {
                 </form>
             </div>
 
-            {submittedExpense && (
-                <div>
-                    <p>Submitted Expense Details:</p>
-                    <p>Title: {submittedExpense.title} Amount: {submittedExpense.amount} Date: {submittedExpense.date}</p>
+            <div className='form-wrapper mt-3'>
+                <div className="row m-auto p-3">
+                    {
+                        expenseData?.map((ele) => {
+                            return (
+                                
+                                    <div className="content mb-3">
+                                        <div className='content__data'>
+                                            <span>{ele.date}</span>
+                                            <span>{ele.title}</span>
+                                        </div>
+                                        <div>{ele.amount}</div>
+                                    </div>
+                           
+                            )
+                        })
+                    }
+
                 </div>
-            )}
+            </div>
         </>
     );
 };
