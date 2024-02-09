@@ -4,6 +4,8 @@ import './ExpensForm.css';
 const ExpenseForm = () => {
     const [expenseDetails, setExpenseDetails] = useState({ title: "", amount: "", date: "" });
     const [expenseData, setExpenseData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setExpenseDetails(prevState => ({
@@ -14,11 +16,18 @@ const ExpenseForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        expenseData.push(expenseDetails);
-        setExpenseData(expenseData);
-        console.log(expenseData);
-        // Reset form fields after submission if needed
+        const newExpenseData = [...expenseData, expenseDetails];
+        setExpenseData(newExpenseData);
+        setFilteredData(newExpenseData);
         setExpenseDetails({ title: "", amount: "", date: "" });
+    };
+
+    const searchHandler = (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filteredExpenses = expenseData.filter((ele) =>
+            ele.title.toLowerCase().includes(searchTerm)
+        );
+        setFilteredData(filteredExpenses);
     };
 
     return (
@@ -39,28 +48,26 @@ const ExpenseForm = () => {
                             <input type="date" className="form-control" name="date" value={expenseDetails.date} onChange={handleInputChange} />
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-primary w-25 float-end me-3">Add Expense</button>
+                    <div className='d-flex justify-content-end w-100 pe-3 gap-2'>
+                        <input type="text" className="form-control w-25" placeholder='Search here...' onKeyUp={searchHandler} />
+                        <button type="submit" className="btn btn-primary w-25">Add Expense</button>
+                    </div>
                 </form>
             </div>
 
-            <div className='form-wrapper mt-3'>
+            <div className='form-wrapper mt-3 h-auto'>
                 <div className="row m-auto p-3">
                     {
-                        expenseData?.map((ele) => {
-                            return (
-                                
-                                    <div className="content mb-3">
-                                        <div className='content__data'>
-                                            <span>{ele.date}</span>
-                                            <span>{ele.title}</span>
-                                        </div>
-                                        <div>{ele.amount}</div>
-                                    </div>
-                           
-                            )
-                        })
+                        filteredData.map((ele, idx) => (
+                            <div className="content mb-3" key={idx}>
+                                <div className='content__data'>
+                                    <span>{ele.date}</span>
+                                    <span>{ele.title}</span>
+                                </div>
+                                <div>{ele.amount}</div>
+                            </div>
+                        ))
                     }
-
                 </div>
             </div>
         </>
