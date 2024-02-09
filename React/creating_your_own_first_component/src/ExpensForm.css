@@ -1,9 +1,9 @@
-.form-wrapper{
+.form-wrapper,.list-wrapper {
     width: 60%;
     height: 250px;
     margin: auto;
     border-radius: 10px;
-    background-color: blueviolet;
+    background-color: #9e86ec;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
@@ -11,7 +11,7 @@
 }
 .content{
     display: flex !important;
-    background-color: #380054;
+    background-color: #3f3e3f;
     color: #ffffff;
     justify-content: space-between;
     padding: 20px;
@@ -25,6 +25,20 @@
     width: 200px;
     display: flex;
     justify-content: space-between;
+}
+.list-wrapper{
+    background-color: #1e1d1e !important;
+}
+
+.amount{
+    background-color: #380054 !important;
+    padding: 10px 60px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 button{

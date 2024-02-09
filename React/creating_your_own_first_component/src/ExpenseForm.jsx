@@ -41,7 +41,7 @@ const ExpenseForm = () => {
                         </div>
                         <div className="mb-3 col-md-6">
                             <label htmlFor="amount" className="form-label">Amount</label>
-                            <input type="text" className="form-control" name="amount" value={expenseDetails.amount} onChange={handleInputChange} />
+                            <input type="number" className="form-control" name="amount" value={expenseDetails.amount} onChange={handleInputChange} />
                         </div>
                         <div className="mb-3 col-md-6">
                             <label htmlFor="date" className="form-label">Date</label>
@@ -55,7 +55,7 @@ const ExpenseForm = () => {
                 </form>
             </div>
 
-            <div className='form-wrapper mt-3 h-auto'>
+            <div className='list-wrapper mt-3 h-auto'>
                 <div className="row m-auto p-3">
                     {
                         filteredData.map((ele, idx) => (
@@ -64,7 +64,7 @@ const ExpenseForm = () => {
                                     <span>{ele.date}</span>
                                     <span>{ele.title}</span>
                                 </div>
-                                <div>{ele.amount}</div>
+                                <div className='amount'>$ {ele.amount}</div>
                             </div>
                         ))
                     }
