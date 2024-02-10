@@ -1,6 +1,7 @@
 .form-wrapper,.list-wrapper {
     width: 60%;
-    height: 250px;
+    padding: 30px 0px;
+    height: fit-content;
     margin: auto;
     border-radius: 10px;
     background-color: #9e86ec;
@@ -43,8 +44,9 @@
     -o-border-radius: 10px;
 }
 
-button{
+button, .btn{
     background-color: #380054 !important;
     outline: none !important;
     border: none !important;
+    color: #ffffff;
 }

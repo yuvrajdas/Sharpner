@@ -5,6 +5,15 @@ const ExpenseForm = () => {
     const [expenseDetails, setExpenseDetails] = useState({ title: "", amount: "", date: "" });
     const [expenseData, setExpenseData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
+    const [formVisible, setFormVisible] = useState(false)
+
+    const showFormVisibility = ()=>{
+        setFormVisible(true);
+    }
+
+    const hideFormVisibility = ()=>{
+        setFormVisible(false);
+    }
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -44,23 +53,26 @@ const ExpenseForm = () => {
         <>
             <div className='form-wrapper mt-3'>
                 <form onSubmit={handleSubmit}>
+                {formVisible ?
                     <div className="row ps-4 pe-4 pt-2 pb-3">
                         <div className="mb-3 col-md-6">
                             <label htmlFor="title" className="form-label">Title</label>
-                            <input type="text" className="form-control" name="title" value={expenseDetails.title} onChange={handleInputChange} />
+                            <input type="text" className="form-control" required name="title" value={expenseDetails.title} onChange={handleInputChange} />
                         </div>
                         <div className="mb-3 col-md-6">
                             <label htmlFor="amount" className="form-label">Amount</label>
-                            <input type="number" className="form-control" name="amount" value={expenseDetails.amount} onChange={handleInputChange} />
+                            <input type="number" className="form-control" required name="amount" value={expenseDetails.amount} onChange={handleInputChange} />
                         </div>
                         <div className="mb-3 col-md-6">
                             <label htmlFor="date" className="form-label">Date</label>
                             <input type="date" className="form-control" name="date" value={expenseDetails.date} onChange={handleInputChange} />
                         </div>
                     </div>
+                    :'' }
                     <div className='d-flex justify-content-end w-100 pe-3 gap-2'>
                         <input type="text" className="form-control w-25" placeholder='Search here...' onKeyUp={searchHandler} />
-                        <button type="submit" className="btn btn-primary w-25">Add Expense</button>
+                        { formVisible ? <div className="btn text-white" onClick={hideFormVisibility}> Cancel </div> : '' }
+                        <button type="submit" className="btn btn-primary w-25" onClick={showFormVisibility}>Add Expense</button>
                     </div>
                 </form>
             </div>
