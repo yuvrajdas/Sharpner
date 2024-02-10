@@ -78,6 +78,9 @@ const ExpenseForm = () => {
                 </div>
                 <div className="row m-auto p-3">
                     {
+                        filteredData.length === 1 ? <h4 className='text-white mb-2'>Only single Expense here. Please add more...</h4> : !filteredData.length ? <h4 className='text-white text-center'>There are no expenses</h4> :''
+                    }
+                    {
                         filteredData.map((ele, idx) => (
                             <div className="content mb-3" key={idx}>
                                 <div className='content__data'>
