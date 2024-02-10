@@ -29,7 +29,9 @@
 .list-wrapper{
     background-color: #1e1d1e !important;
 }
-
+.filter-section{
+    color: #ffffff;
+}
 .amount{
     background-color: #380054 !important;
     padding: 10px 60px;

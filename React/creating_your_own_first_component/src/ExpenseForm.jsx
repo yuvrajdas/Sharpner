@@ -30,6 +30,16 @@ const ExpenseForm = () => {
         setFilteredData(filteredExpenses);
     };
 
+    const filterHandler = (e)=>{
+        const dateKey = e.target.value.toLowerCase();
+        alert(dateKey)
+        const filteredExpenses = expenseData.filter((ele) => 
+        ele.date.toLowerCase().includes(dateKey)
+    );
+    console.log(filteredExpenses);
+    setFilteredData(filteredExpenses);
+    }
+
     return (
         <>
             <div className='form-wrapper mt-3'>
@@ -56,6 +66,16 @@ const ExpenseForm = () => {
             </div>
 
             <div className='list-wrapper mt-3 h-auto'>
+                <div className='filter-section d-flex justify-content-between p-3'>
+                    <span>Filter by year</span> 
+                    <select name="" id="" className='form-select shadow-none w-25' onChange={filterHandler}>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                    </select>
+                </div>
                 <div className="row m-auto p-3">
                     {
                         filteredData.map((ele, idx) => (
