@@ -6,7 +6,7 @@ const App = () => {
     border: '1px solid', borderRadius: '5px', padding: '5px'
   };
 
-  const [user, setUser] = useState({ username: "", age: "" });
+  const [user, setUser] = useState({ username: "", age: "", college:"" });
   const [userList, setUserList] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -25,7 +25,7 @@ const App = () => {
   }
 
   const isFormValid = () => {
-    return user.username !== "" && user.age !== "";
+    return (user.username !== "" && user.age !== "" && user.college !== "");
   }
 
   return (
@@ -38,6 +38,10 @@ const App = () => {
                 <div className="mb-3">
                   <label htmlFor="username" className="form-label">Username</label>
                   <input type="text" value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} className="form-control shadow-none" />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="college" className="form-label">College</label>
+                  <input type="text" value={user.college} onChange={(e) => setUser({ ...user, college: e.target.value })} className="form-control shadow-none" />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="age" className="form-label">Age (Years)</label>
@@ -54,7 +58,7 @@ const App = () => {
             <div className="card p-4">
               {userList?.map((ele, index) => {
                 return (<div style={listItemStyle} key={index}>
-                  <span>{ele.username}</span> <span>({ele.age} years old)</span>
+                  <span>{ele.username}</span> <span>{ele.college}</span> <span>({ele.age} years old)</span>
                 </div>)
               })}
             </div>
