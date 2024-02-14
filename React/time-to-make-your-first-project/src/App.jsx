@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 const App = () => {
@@ -6,9 +6,9 @@ const App = () => {
     border: '1px solid', borderRadius: '5px', padding: '5px'
   };
 
-  const [user, setUser] = useState({ username: "", age: "", college:"" });
+  const [user, setUser] = useState({ username: "", age: "", college: "" });
   const [userList, setUserList] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessages, setErrorMessages] = useState({ username: "", age: "", college: "" });
 
   const addUser = (e) => {
     e.preventDefault();
@@ -16,16 +16,27 @@ const App = () => {
       return;
     }
     if (user.age < 0) {
-      setErrorMessage("Age cannot be negative");
+      setErrorMessages({ ...errorMessages, age: "Age cannot be negative" });
       return;
     }
     setUserList([...userList, user]); // Create a new array with the updated user list
-    setUser({ username: "", age: "" }); // Clear the input fields after adding the user
-    setErrorMessage(""); // Clear error message if it was set previously
+    setUser({ username: "", age: "", college: "" }); // Clear the input fields after adding the user
+    setErrorMessages({ username: "", age: "", college: "" }); // Clear error messages if they were set previously
   }
 
   const isFormValid = () => {
-    return (user.username !== "" && user.age !== "" && user.college !== "");
+    const errors = {};
+    if (!user.username) {
+      errors.username = "Username is required";
+    }
+    if (!user.age) {
+      errors.age = "Age is required";
+    }
+    if (!user.college) {
+      errors.college = "College is required";
+    }
+    setErrorMessages(errors);
+    return Object.keys(errors).length === 0;
   }
 
   return (
@@ -38,17 +49,19 @@ const App = () => {
                 <div className="mb-3">
                   <label htmlFor="username" className="form-label">Username</label>
                   <input type="text" value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} className="form-control shadow-none" />
+                  {errorMessages.username && <div className="text-danger">{errorMessages.username}</div>}
                 </div>
                 <div className="mb-3">
                   <label htmlFor="college" className="form-label">College</label>
                   <input type="text" value={user.college} onChange={(e) => setUser({ ...user, college: e.target.value })} className="form-control shadow-none" />
+                  {errorMessages.college && <div className="text-danger">{errorMessages.college}</div>}
                 </div>
                 <div className="mb-3">
                   <label htmlFor="age" className="form-label">Age (Years)</label>
                   <input type="number" value={user.age} onChange={(e) => setUser({ ...user, age: e.target.value })} className="form-control shadow-none" />
+                  {errorMessages.age && <div className="text-danger">{errorMessages.age}</div>}
                 </div>
                 <button type="submit" className="btn btn-success">Add User</button>
-                {errorMessage && <div className="text-danger mt-2">{errorMessage}</div>}
               </form>
             </div>
           </div>
