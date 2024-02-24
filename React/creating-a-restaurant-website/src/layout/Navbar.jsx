@@ -12,7 +12,7 @@ const Navbar = () => {
                     </button>
                     <div className="collapse navbar-collapse justify-content-end" id="navbarColor02">
                         <button>
-                            <span> <img src={cart} alt="" /></span> <span>Your Cart</span> <span>0</span>
+                            <span> <img src={cart} alt="" /></span> <span>Your Cart</span> <span className='total-cart-counter' >3</span>
                         </button>
                     </div>
                 </div>
