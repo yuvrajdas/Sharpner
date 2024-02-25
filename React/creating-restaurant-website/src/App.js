@@ -1,8 +1,8 @@
 import { Fragment, useState } from 'react';
 
-import Header from './components/layout/Header';
+import Header from './components/Layout/Header';
 import Meals from './components/Meals/Meals';
-import Cart from './components/cart/Cart';
+import Cart from './components/Cart/Cart';
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);

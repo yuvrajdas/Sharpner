@@ -15,6 +15,8 @@
   
   .actions {
     text-align: right;
+    display: flex !important;
+    justify-content: end !important;
   }
   
   .actions button {
