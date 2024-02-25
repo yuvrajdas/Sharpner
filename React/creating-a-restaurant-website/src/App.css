@@ -63,3 +63,18 @@
         color: #8e4e1f;
     }
 }
+
+.add-to-cart-button{
+    border: none;
+    width: 100px;
+    border-radius: 15px;
+    background: #761f0a;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 31px;
+}
+.cart-input{
+    width: 30px;
+    outline: none;
+}

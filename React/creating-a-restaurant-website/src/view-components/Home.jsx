@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import bannerImage from '../assets/images/meals.jpg';
 import { DUMMY_MEALS } from '../dummyMeals';
+import AddButton from '../generic-components/AddButton';
+import Input from '../generic-components/Input';
 const Home = () => {
 
   return (
@@ -20,18 +22,28 @@ const Home = () => {
           {
             DUMMY_MEALS.map((meals) => {
               return (
-                <div className="item-card_wrapper">
-                  <div className='item-card__heading'>{meals.name}</div>
-                  <div className='item-card__desc'>{meals.description}</div>
-                  <div className='item-card__price'> ${meals.price}</div>
+                <>
+                  <div className="item-card_wrapper d-flex justify-content-between w-100">
+                    <div className='mt-2'>
+                      <div className='item-card__heading'>{meals.name}</div>
+                      <div className='item-card__desc'>{meals.description}</div>
+                      <div className='item-card__price'> ${meals.price}</div>
+                    </div>
+                    <div className='d-flex flex-column align-item-center gap-1'>
+                     <div>
+                      <span>Qty.</span>  <Input />
+                     </div>
+                      <AddButton />
+                    </div>
+                  </div>
                   <hr />
-                </div>
+                </>
               )
             })
           }
         </div>
       </div>
-      
+
     </>
   );
 }
