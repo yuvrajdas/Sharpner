@@ -6,13 +6,13 @@ const AddProduct = () => {
             <form>
                 <div className="row">
                     <div className="col-md-3 mb-2">
-                        <input type="text" class="form-control shadow-none" placeholder='Prduct Name' />
+                        <input type="text" className="form-control shadow-none" placeholder='Prduct Name' />
                     </div>
                     <div className="col-md-3 mb-2">
-                        <input type="text" class="form-control shadow-none" placeholder='Description' />
+                        <input type="text" className="form-control shadow-none" placeholder='Description' />
                     </div>
                     <div className="col-md-3 mb-2">
-                        <input type="text" class="form-control shadow-none" placeholder='Price' />
+                        <input type="text" className="form-control shadow-none" placeholder='Price' />
                     </div>
                     <div className="col-md-3 mb-2">
                         <Button variant="contained" >

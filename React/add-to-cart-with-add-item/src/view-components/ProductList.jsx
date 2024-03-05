@@ -1,38 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import AddProduct from './AddProduct';
+
 import '../css/ProductList.css';
+import { ProductContext } from '../App';
 
 const ProductList = () => {
+    const { state: { allProduct }, AddQty } = useContext(ProductContext)
     return (
         <>
             <div className="container mt-5">
                 <h2 className='text-success'>Product List</h2>
                 <AddProduct />
                 <div className="mt-4">
-                    <div className='card mb-2'>
-                        <div class="list-group-item d-flex justify-content-between align-items-center p-2">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold">Subheading</div>
-                                <div><i>Price <strong>$45</strong></i></div>
-                                Content for list item
-                            </div>
-                            <span class="badge text-bg-primary rounded-pill me-2 custom-add">Add 1</span>
-                            <span class="badge text-bg-primary rounded-pill me-2 custom-add">Add 2</span>
-                            <span class="badge text-bg-primary rounded-pill me-2 custom-add">Add 3</span>
-                        </div>
-                    </div>
-                    <div className='card mb-2'>
-                        <div class="list-group-item d-flex justify-content-between align-items-center p-2">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold">Subheading</div>
-                                <div><i>Price <strong>$45</strong></i></div>
-                                Content for list item
-                            </div>
-                            <span class="badge text-bg-primary rounded-pill me-2 custom-add">Add 1</span>
-                            <span class="badge text-bg-primary rounded-pill me-2 custom-add">Add 2</span>
-                            <span class="badge text-bg-primary rounded-pill me-2 custom-add">Add 3</span>
-                        </div>
-                    </div>
+                    {
+                        allProduct.map((ele) => {
+                            return (
+                                <div className='card mb-2' key={ele.id}>
+                                    <div className="list-group-item d-flex justify-content-between align-items-center p-2">
+                                        <div className="ms-2 me-auto">
+                                            <div className="fw-bold">{ele.p_name}</div>
+                                            <div><i>Price <strong>${ele.price}</strong></i></div>
+                                            {ele.p_description}
+                                        </div>
+                                        <span className="badge text-bg-primary rounded-pill me-2 custom-add" onClick={() => AddQty(1)} >Add 1</span>
+                                        <span className="badge text-bg-primary rounded-pill me-2 custom-add" onClick={() => AddQty(2)}>Add 2</span>
+                                        <span className="badge text-bg-primary rounded-pill me-2 custom-add" onClick={() => AddQty(3)}>Add 3</span>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
         </>
