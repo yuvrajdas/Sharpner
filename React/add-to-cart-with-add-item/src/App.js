@@ -6,25 +6,38 @@ import { createContext, useReducer } from 'react';
 import { cartReducer } from './reducer/Reducer'
 export const ProductContext = createContext();
 
-const state = {
-  allProduct: products,
+let apiRes = products.map((prod) => {
+  return {
+    ...prod,
+    sub_total: 0,
+    quantity: 0
+  }
+})
+const initState = {
+  allProduct: apiRes,
   totalCartItem: 0,
+  grandTotal: 0,
   myCart: []
 }
 
 function App() {
 
-  const [crrState, dispatch] = useReducer(cartReducer, state);
-  const AddQty = (qty) => {
+  const [crrState, dispatch] = useReducer(cartReducer, initState);
+  const AddQty = (qty, item) => {
     return dispatch({
-      type:'ADD_1',
-      pyaload:qty
+      type: `ADD_${qty}`,
+      payload: { qty: qty, item: item }
     })
   }
-
+  const AddProduct = (item) => {
+    return dispatch({
+      type:'ADD_PRODUCT',
+      payload:item
+    })
+  }
   return (
     <>
-      <ProductContext.Provider value={{ state, AddQty }}>
+      <ProductContext.Provider value={{ crrState, AddQty, AddProduct }}>
         <Navbar />
         <ProductList />
       </ProductContext.Provider>

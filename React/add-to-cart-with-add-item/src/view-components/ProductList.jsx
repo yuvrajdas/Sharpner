@@ -5,13 +5,14 @@ import '../css/ProductList.css';
 import { ProductContext } from '../App';
 
 const ProductList = () => {
-    const { state: { allProduct }, AddQty } = useContext(ProductContext)
+    const { crrState:{ allProduct }, AddQty } = useContext(ProductContext)
+     console.log(useContext(ProductContext));
     return (
         <>
             <div className="container mt-5">
-                <h2 className='text-success'>Product List</h2>
+                <h2 className='text-white mb-3'>Product List</h2>
                 <AddProduct />
-                <div className="mt-4">
+                <div className="mt-2">
                     {
                         allProduct.map((ele) => {
                             return (
@@ -22,9 +23,9 @@ const ProductList = () => {
                                             <div><i>Price <strong>${ele.price}</strong></i></div>
                                             {ele.p_description}
                                         </div>
-                                        <span className="badge text-bg-primary rounded-pill me-2 custom-add" onClick={() => AddQty(1)} >Add 1</span>
-                                        <span className="badge text-bg-primary rounded-pill me-2 custom-add" onClick={() => AddQty(2)}>Add 2</span>
-                                        <span className="badge text-bg-primary rounded-pill me-2 custom-add" onClick={() => AddQty(3)}>Add 3</span>
+                                        <span className="badge text-bg-primary rounded-pill me-2 custom-add" onClick={() => AddQty(1, ele)} >Add 1</span>
+                                        <span className="badge text-bg-primary rounded-pill me-2 custom-add" onClick={() => AddQty(2, ele)}>Add 2</span>
+                                        <span className="badge text-bg-primary rounded-pill me-2 custom-add" onClick={() => AddQty(3, ele)}>Add 3</span>
                                     </div>
                                 </div>
                             )

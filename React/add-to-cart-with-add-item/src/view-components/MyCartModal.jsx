@@ -1,7 +1,6 @@
 import Modal from '@mui/material/Modal';
 import '../css/MyCartModal.css'
-const MyCartModal = ({ isShow, closeModal }) => {
-
+const MyCartModal = ({ isShow, closeModal, myCartData, grandTotalPrice }) => {
     return (
         <>
             <Modal
@@ -15,17 +14,22 @@ const MyCartModal = ({ isShow, closeModal }) => {
                         <img src="./icons/close.svg" alt="close_icon" onClick={closeModal} />
                     </div>
                     <ol className="list-group list-group-numbered">
-                        <li className="list-group-item d-flex justify-content-between align-items-start">
-                            <div className="ms-2 me-auto">
-                                <div className="fw-bold">Subheading</div>
-                                Content for list item
-                            </div>
-                            <div className="ms-2 me-auto">
-                                <span className="badge text-bg-primary rounded-pill">x 14</span>
-                            </div>
-                            <div className="fw-bold">$ 56</div>
-                        </li>
+                        {
+                            myCartData.map((ele) => {
+                                return (<li className="list-group-item d-flex justify-content-between align-items-start" key={ele.id}>
+                                    <div className="ms-2 me-auto">
+                                        <div className="fw-bold">{ele.p_name}</div>
+                                        {ele.p_description}
+                                    </div>
+                                    <div className="ms-2 me-auto">
+                                        <span className="badge text-bg-primary rounded-pill">x {ele.quantity}</span>
+                                    </div>
+                                    <div className="fw-bold">$ {ele.sub_total}</div>
+                                </li>)
+                            })
+                        }
                     </ol>
+                    <div className='mt-2 float-end'>Grand Total <strong>$ {grandTotalPrice}</strong></div>
                 </div>
             </Modal>
         </>
