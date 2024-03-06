@@ -6,7 +6,6 @@ import { ProductContext } from '../App';
 
 const ProductList = () => {
     const { crrState:{ allProduct }, AddQty } = useContext(ProductContext)
-     console.log(useContext(ProductContext));
     return (
         <>
             <div className="container mt-5">

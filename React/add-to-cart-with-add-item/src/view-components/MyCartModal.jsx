@@ -1,6 +1,15 @@
 import Modal from '@mui/material/Modal';
+import { Button } from '@mui/material'
 import '../css/MyCartModal.css'
+
 const MyCartModal = ({ isShow, closeModal, myCartData, grandTotalPrice }) => {
+    
+    const placeOrder = () => {
+     
+        let order = { my_order: myCartData }
+        console.log('Order details ', order);
+    }
+
     return (
         <>
             <Modal
@@ -28,8 +37,18 @@ const MyCartModal = ({ isShow, closeModal, myCartData, grandTotalPrice }) => {
                                 </li>)
                             })
                         }
+                        {
+                            myCartData.length<1?<div className='text-center p-5'>
+                                You have not added any item
+                            </div> :''
+                        }
                     </ol>
-                    <div className='mt-2 float-end'>Grand Total <strong>$ {grandTotalPrice}</strong></div>
+                    <div className='mt-3 d-flex flex-column align-items-end'>
+                        <span>Grand Total <strong>$ {grandTotalPrice}</strong></span>
+                        <Button style={{width:'fit-content'}} variant="contained" onClick={placeOrder}>
+                            Place Order
+                        </Button>
+                    </div>
                 </div>
             </Modal>
         </>

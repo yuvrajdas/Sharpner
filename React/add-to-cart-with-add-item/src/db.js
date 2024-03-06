@@ -11,6 +11,6 @@ export const products = [
         id:"ldk@1EK",
         p_name:"Jimjam",
         p_description:"lorem data, anri a2",
-        price:30
+        price:50
     }
 ] 
