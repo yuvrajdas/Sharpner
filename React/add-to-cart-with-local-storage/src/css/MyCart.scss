@@ -1,0 +1,17 @@
+.cart-wrapper{
+    position:relative;
+    left:18%;
+    cursor: pointer;
+    .cart-count{
+        background-color: green;
+        padding: 2px 6px;
+        border-radius: 30px;
+        color: white;
+        font-weight: 600;
+        height: 10px;
+        margin-left: 10px;
+        position: relative;
+        left: 40px;
+        top: -24px;
+    }
+}
