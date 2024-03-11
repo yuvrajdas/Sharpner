@@ -4,6 +4,29 @@ nav {
         color: #ffffff;
     }
 }
+
+.my_cart {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 5%;
+    border: 3px solid #56CCF2;
+    border: 1px solid;
+    padding: 4px 15px;
+    border-radius: 12px;
+    color: #56CCF2;
+    font-weight: 500;
+    span{
+        position: relative;
+        top: -10px;
+        left: 5px;
+        border: 1px solid #56CCF2;
+        background-color: #777;
+        border-radius: 20px;
+        padding: 3px 8px;
+    }
+}
+
 .header-content {
     background-color: #777;
     height: fit-content;
@@ -14,6 +37,7 @@ nav {
     gap: 10px;
     padding: 20px;
     min-height: 250px;
+
     .sub-heading {
         border: 2px solid #56CCF2;
         padding: 15px 30px;
@@ -23,6 +47,7 @@ nav {
 
 
     }
+
     .play-btn {
         cursor: pointer;
         display: block;
