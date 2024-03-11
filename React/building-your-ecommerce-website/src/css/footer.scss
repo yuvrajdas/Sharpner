@@ -1,0 +1,16 @@
+.footer-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 20px 100px;
+    background: #56CCF2;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 15px 400px;
+    color: #ffffff;
+    ul{
+        list-style: none;
+        display: flex;
+        gap: 50px;
+    }
+}

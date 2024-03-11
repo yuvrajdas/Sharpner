@@ -1,7 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../css/Header.scss';
 const Header = () => {
+  let location = useLocation();
+  let route = false;
+  if (location.pathname === '/') {
+    route = true;
+  } else {
+    route = false;
+  }
   return (
     <>
       <nav className='bg-dark text-white pb-1 pt-3'>
@@ -12,6 +19,12 @@ const Header = () => {
         </ul>
       </nav>
       <section className='header-content'>
+        <h1 className='display-2 text-white'>The Generics</h1>
+        { route ?  <>
+          <div className='sub-heading mt-3'>Get our Latest Album</div> 
+          <button class="play-btn">►</button>
+          </>: ''
+        }
       </section>
     </>
   )

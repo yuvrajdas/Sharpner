@@ -1,0 +1,43 @@
+.store-wrapper {
+    .content {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+
+        img {
+            height: 300px;
+            width: 300px;
+        }
+
+        img {
+            --f: 1.50;
+            clip-path: inset(0);
+            transition: .4s;
+            cursor: pointer;
+        }
+
+        img:hover {
+            clip-path: inset(calc((1 - 1/var(--f)) * 50%));
+            scale: var(--f)
+        }
+
+        .action {
+            width: 300px;
+            padding: 8px 0px;
+        }
+    }
+
+    button {
+        min-width: 150px !important;
+        max-width: 150px !important;
+        max-height: 30px !important;
+        min-height: 30px !important;
+        background: #56CCF2;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-weight: 700;
+        font-size: 14px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+}
