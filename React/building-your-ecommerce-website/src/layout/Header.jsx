@@ -4,7 +4,7 @@ import '../css/Header.scss';
 import CartModal from '../view-components/CartModal';
 const Header = () => {
   let location = useLocation();
-  const [cartModal, setcartModal] = useState(false);
+  const [showCartModal, setShowCartModal] = useState(false);
   return (
     <>
       <nav className='bg-dark text-white pb-1 pt-3'>
@@ -14,8 +14,8 @@ const Header = () => {
           <Link to={'/about'} className='links'><li>ABOUT</li></Link>
         </ul>
       </nav>
-      <CartModal isCa={showCart} />
-      {location.pathname === '/store' ? <div className='my_cart'>Cart <span>1</span></div> : ''}
+      <CartModal isCartShow={showCartModal} closeCartModal={()=>setShowCartModal(false)} />
+      {location.pathname === '/store' ? <div onClick={()=>setShowCartModal(true)} className='my_cart'>Cart <span>1</span></div> : ''}
       <section className='header-content'>
         <h1 className='display-2 text-white'>The Generics</h1>
         {location.pathname === '/' ? <>
