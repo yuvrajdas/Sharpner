@@ -2,7 +2,7 @@ import Modal from '@mui/material/Modal';
 import '../css/cart-modal.scss';
 
 const CartModal = ({ isCartShow, closeCartModal }) => {
-  console.log(isCartShow, closeCartModal);
+
   return (
     <>
       <Modal

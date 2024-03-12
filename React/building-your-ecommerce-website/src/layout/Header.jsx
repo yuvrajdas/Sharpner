@@ -20,7 +20,7 @@ const Header = () => {
         <h1 className='display-2 text-white'>The Generics</h1>
         {location.pathname === '/' ? <>
           <div className='sub-heading mt-3'>Get our Latest Album</div>
-          <button class="play-btn">►</button>
+          <button className="play-btn">►</button>
         </> : ''
         }
       </section>
