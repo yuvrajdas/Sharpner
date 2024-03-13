@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import '../css/Header.scss';
 import CartModal from '../view-components/CartModal';
+import { CartContext } from '../App';
+
 const Header = () => {
   let location = useLocation();
   const [showCartModal, setShowCartModal] = useState(false);
+  const {cartState:{totalQty, myCart, grandTotal}} = useContext(CartContext);
   return (
     <>
       <nav className='bg-dark text-white pb-1 pt-3'>
@@ -14,8 +17,8 @@ const Header = () => {
           <Link to={'/about'} className='links'><li>ABOUT</li></Link>
         </ul>
       </nav>
-      <CartModal isCartShow={showCartModal} closeCartModal={()=>setShowCartModal(false)} />
-      {location.pathname === '/store' ? <div onClick={()=>setShowCartModal(true)} className='my_cart'>Cart <span>1</span></div> : ''}
+      <CartModal isCartShow={showCartModal} cartData={{myCart, grandTotal}} closeCartModal={() => setShowCartModal(false)} />
+      {location.pathname === '/store' ? <div onClick={() => setShowCartModal(true)} className='my_cart'>Cart <span>{totalQty}</span></div> : ''}
       <section className='header-content'>
         <h1 className='display-2 text-white'>The Generics</h1>
         {location.pathname === '/' ? <>
